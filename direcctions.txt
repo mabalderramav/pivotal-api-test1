@@ -1,0 +1,17 @@
+https://na30.salesforce.com/801/o
+https://www.pivotaltracker.com/help/api/rest/v5?id=v5#projects_project_id_delete
+https://www.pivotaltracker.com/n/projects/1652671
+
+
+
+
+
+https://github.com/wMercadoJ/cucumber_course/blob/master/Walter/Final%20Project/features/final_project.feature
+
+configuration VM to Api test 
+ 192.168.1.13
+255.255.255.0
+
+
+
+dns 192.168.1.10
