@@ -11,6 +11,6 @@ Feature: Test for GET Comments in Pivotal
 
   Scenario: GET method for Story API
     When I send a /projects/[project.id]/stories/[story.id]/comments GET request
-    And I expect Status code 200
+    Then I expect Status code 200
     And I send a /projects/[project.id] DELETE request
-    Then I expect Status code 204
+    And I expect Status code 204

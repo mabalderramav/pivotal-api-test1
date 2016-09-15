@@ -1,9 +1,10 @@
 package org.fundacionjala.pivotaltracker.api;
 
-import java.util.Map;
-
+import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
+
+import java.util.Map;
 
 import static io.restassured.RestAssured.given;
 
@@ -26,7 +27,7 @@ public final class RequestManager {
 
     public static Response post(String endPoint, String body) {
         return given().spec(REQUEST_SPECIFICATION)
-                .header("Content-Type", "application/json")
+                .contentType(ContentType.JSON)
                 .body(body)
                 .when()
                 .post(endPoint);

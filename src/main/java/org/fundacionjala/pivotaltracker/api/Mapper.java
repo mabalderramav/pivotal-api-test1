@@ -1,11 +1,11 @@
 package org.fundacionjala.pivotaltracker.api;
 
+import io.restassured.response.Response;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import io.restassured.response.Response;
 
 import static io.restassured.path.json.JsonPath.from;
 
@@ -24,7 +24,7 @@ public class Mapper {
 
     private static final int LIMIT = 2;
 
-    public static final Map<String, Response> RESPONSE_VALUES = new HashMap<>();
+    private static final Map<String, Response> RESPONSE_VALUES = new HashMap<>();
 
 
     private Mapper() {
