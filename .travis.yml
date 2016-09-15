@@ -2,3 +2,10 @@ language: java
 jdk:
 - oraclejdk8
 
+gradle assemble
+gradle check
+
+# safelist
+branches:
+  only:
+  - develop
