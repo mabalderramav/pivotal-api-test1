@@ -11,7 +11,7 @@ public class Connection {
 
     private Connection() {
         RestAssured.baseURI = Environment.getInstance().getBaseUri();
-        RestAssured.proxy(Environment.getInstance().getProxy());
+        //RestAssured.proxy(Environment.getInstance().getProxy());
         requestSpecification = new RequestSpecBuilder()
                 .addHeader("X-TrackerToken", Environment.getInstance().getToken())
                 .setRelaxedHTTPSValidation().build();
