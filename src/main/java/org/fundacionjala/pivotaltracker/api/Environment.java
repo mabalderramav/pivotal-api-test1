@@ -1,4 +1,4 @@
-package org.fundacionjala.pivotaltracker;
+package org.fundacionjala.pivotaltracker.api;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -7,15 +7,13 @@ import java.io.IOException;
 import java.util.Properties;
 
 /**
- * Class to setup the configuration property
+ * Created by LourdesVillca on 8/31/2016.
  */
 public class Environment {
 
     private static final String CONFIG = "config.properties";
 
     private static final String AUTHENTICATION_TOKEN = "authentication.token";
-    public static final String AUTHENTICATION_BASE_URI = "authentication.baseURI";
-    public static final String AUTHENTICATION_PROXY = "authentication.proxy";
 
     private static Environment environment;
 
@@ -33,8 +31,8 @@ public class Environment {
         }
     }
 
-    public static Environment getInstance() {
-        if (environment == null) {
+    public static Environment getInstance(){
+        if(environment == null){
             environment = new Environment();
         }
         return environment;
@@ -45,11 +43,12 @@ public class Environment {
     }
 
     public String getBaseUri() {
-        return getEnv(AUTHENTICATION_BASE_URI);
+        return getEnv("authentication.baseURI");
     }
 
+
     public String getProxy() {
-        return getEnv(AUTHENTICATION_PROXY);
+        return getEnv("authentication.proxy");
     }
 
     public String getToken() {

@@ -1,25 +1,24 @@
 package org.fundacionjala.pivotaltracker.step_definition;
 
+import java.util.Map;
+
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import io.restassured.response.Response;
 
-import org.fundacionjala.pivotaltracker.BuildRoute;
-import org.fundacionjala.pivotaltracker.RequestManager;
+import org.fundacionjala.pivotaltracker.api.Mapper;
+import org.fundacionjala.pivotaltracker.api.RequestManager;
 
 import static junit.framework.TestCase.assertEquals;
 
-/**
- * Steps for Project end point
- */
 public class ResourcesSteps {
 
     private Response resp;
-    int projectId;
 
     @When("^I send a (.*) GET request$")
     public void iSendAProjectGETRequest(String endPoint) {
-        resp = RequestManager.get(endPoint);
+        resp = RequestManager.get(Mapper.mapEndpoint(endPoint));
     }
 
     @Then("^I expect Status code (\\d+)$")
@@ -27,15 +26,35 @@ public class ResourcesSteps {
         assertEquals(statusCode, resp.getStatusCode());
     }
 
+    @And("^stored as (.*)")
+    public void storedAs(String key) {
+        Mapper.addResponse(key, resp);
+    }
+
     @When("^I send a (.*) POST with the json$")
     public void iSendAProjectPOSTWithTheJson(String endPoint, String jsonData) {
-        resp = RequestManager.post(endPoint,jsonData);
+        resp = RequestManager.post(Mapper.mapEndpoint(endPoint), jsonData);
     }
 
-    @Then("^I delete the created project with a given (.*)$")
-    public void iDelete_the_created_project_with_a_given_Project_Id(String endPoint){
-        projectId = resp.then().extract().path("id");
-        resp = RequestManager.delete(BuildRoute.buildProjectRoute(endPoint,projectId));
+
+    @When("I send a (.*) PUT request with json")
+    public void iSendAProjectPUTRequestWithJson(String endPoint, String jsonData) {
+        resp = RequestManager.put(Mapper.mapEndpoint(endPoint), jsonData);
     }
 
+    @When("^I send a (.*) DELETE request$")
+    public void iSendAProjectDELETERequest(String endPoint) {
+        resp = RequestManager.delete(Mapper.mapEndpoint(endPoint));
+    }
+
+    @When("^I have a crated (.*) with the table$")
+    public void i_have_a_crated_projects_with_the_table(String endPoint, Map<String, Object> jsonData) {
+        resp = RequestManager.post(Mapper.mapEndpoint(endPoint), jsonData);
+    }
+
+    @When("^I send a (.*) PUT request with table$")
+    public void iSendAProjectsProjectIdPUTRequestWithTable(String endPoint, Map<String, Object> jsonData) {
+        resp = RequestManager.put(Mapper.mapEndpoint(endPoint), jsonData);
+    }
 }
+
