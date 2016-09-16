@@ -14,18 +14,19 @@ import static io.restassured.RestAssured.given;
  */
 public final class RequestManager {
 
-    private static final RequestSpecification REQUEST_SPECIFICATION = Connection.getInstance().getRequestSpecification();
+    private static final RequestSpecification REQUEST_SPECIFICATION =
+            Connection.getInstance().getRequestSpecification();
 
     private RequestManager() {
     }
 
-    public static Response get(String endPoint) {
+    public static Response get(final String endPoint) {
         return given().spec(REQUEST_SPECIFICATION)
                 .when()
                 .get(endPoint);
     }
 
-    public static Response post(String endPoint, String body) {
+    public static Response post(final String endPoint, final String body) {
         return given().spec(REQUEST_SPECIFICATION)
                 .contentType(ContentType.JSON)
                 .body(body)
@@ -33,14 +34,14 @@ public final class RequestManager {
                 .post(endPoint);
     }
 
-    public static Response post(String endPoint, Map<String, Object> body) {
+    public static Response post(final String endPoint, final Map<String, Object> body) {
         return given().spec(REQUEST_SPECIFICATION)
                 .params(body)
                 .when()
                 .post(endPoint);
     }
 
-    public static Response put(String endPoint, String body) {
+    public static Response put(final String endPoint, final String body) {
         return given().spec(REQUEST_SPECIFICATION)
                 .header("Content-Type", "application/json")
                 .body(body)
@@ -48,14 +49,14 @@ public final class RequestManager {
                 .put(endPoint);
     }
 
-    public static Response put(String endPoint, Map<String, Object> body) {
+    public static Response put(final String endPoint, final Map<String, Object> body) {
         return given().spec(REQUEST_SPECIFICATION)
                 .params(body)
                 .when()
                 .put(endPoint);
     }
 
-    public static Response delete(String endPoint) {
+    public static Response delete(final String endPoint) {
         return given().spec(REQUEST_SPECIFICATION)
                 .when()
                 .delete(endPoint);

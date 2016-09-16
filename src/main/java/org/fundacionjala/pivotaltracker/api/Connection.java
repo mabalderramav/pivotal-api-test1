@@ -4,7 +4,8 @@ import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.specification.RequestSpecification;
 
-public class Connection {
+
+ public final class Connection {
 
     private static final String X_TRACKER_TOKEN_HEADER = "X-TrackerToken";
     private static final Environment ENVIRONMENT = Environment.getInstance();
@@ -29,5 +30,4 @@ public class Connection {
         }
         return connection;
     }
-
 }

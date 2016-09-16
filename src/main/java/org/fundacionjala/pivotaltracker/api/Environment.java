@@ -1,5 +1,7 @@
 package org.fundacionjala.pivotaltracker.api;
 
+import org.apache.log4j.Logger;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -9,9 +11,11 @@ import java.util.Properties;
 /**
  * Created by LourdesVillca on 8/31/2016.
  */
-public class Environment {
+public final class Environment {
 
     private static final String CONFIG = "config.properties";
+
+    private static final Logger LOGGER = Logger.getLogger(Environment.class.getSimpleName());
 
     private static final String AUTHENTICATION_TOKEN = "authentication.token";
 
@@ -25,21 +29,23 @@ public class Environment {
             properties = new Properties();
             properties.load(fileReader);
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            LOGGER.warn("The properties file couldn't be found", e);
         } catch (IOException e) {
-            e.printStackTrace();
+            LOGGER.warn("A problem of type", e);
         }
     }
 
-    public static Environment getInstance(){
-        if(environment == null){
+    public static Environment getInstance() {
+
+        if (environment == null) {
             environment = new Environment();
         }
         return environment;
     }
 
-    public String getEnv(String env) {
-        return properties.getProperty(env);
+    public String getEnv(final String env) {
+        String property = System.getProperty(env);
+        return property == null ? properties.getProperty(env) : property;
     }
 
     public String getBaseUri() {
