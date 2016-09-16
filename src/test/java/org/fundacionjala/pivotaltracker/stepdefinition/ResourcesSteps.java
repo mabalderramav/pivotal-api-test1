@@ -1,4 +1,4 @@
-package org.fundacionjala.pivotaltracker.step_definition;
+package org.fundacionjala.pivotaltracker.stepdefinition;
 
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.When;

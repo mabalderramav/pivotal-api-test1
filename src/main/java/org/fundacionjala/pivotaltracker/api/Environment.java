@@ -15,7 +15,7 @@ public final class Environment {
 
     private static final String CONFIG = "config.properties";
 
-    private static final Logger LOGGER = Logger.getLogger(Environment.class.getSimpleName());
+    private static final Logger LOGGER = Logger.getLogger(Environment.class);
 
     private static final String AUTHENTICATION_TOKEN = "authentication.token";
 
@@ -45,7 +45,10 @@ public final class Environment {
 
     public String getEnv(final String env) {
         String property = System.getProperty(env);
-        return property == null ? properties.getProperty(env) : property;
+        if (property == null) {
+            return properties.getProperty(env);
+        }
+        return property;
     }
 
     public String getBaseUri() {
