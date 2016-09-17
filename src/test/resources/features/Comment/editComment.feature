@@ -17,7 +17,7 @@ Feature: Test for PUT Comments in Pivotal
     And I send a /projects/[project.id] DELETE request
     Then I expect Status code 204
 
-  Scenario: PUT method for Story API with json
+  Scenario: PUT method for Comments API with json
     When  I send a /projects/[project.id]/stories/[story.id]/comments/[comment.id] PUT request with json
       """
       {

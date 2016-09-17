@@ -1,16 +1,16 @@
 package org.fundacionjala.pivotaltracker.api;
 
+import io.restassured.response.Response;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import io.restassured.response.Response;
-
 import static io.restassured.path.json.JsonPath.from;
 
 
-public class Mapper {
+public final class Mapper {
 
     private static final String REGEX_INSIDE_BRACKETS = "(?<=\\[)(.*?)(?=\\])";
 
@@ -24,17 +24,17 @@ public class Mapper {
 
     private static final int LIMIT = 2;
 
-    public static final Map<String, Response> RESPONSE_VALUES = new HashMap<>();
+    private static final Map<String, Response> RESPONSE_VALUES = new HashMap<>();
 
 
     private Mapper() {
     }
 
-    public static String getField(Response response, String parameter) {
+    public static String getField(final Response response, final String parameter) {
         return from(response.asString()).get(parameter).toString();
     }
 
-    public static String mapEndpoint(String endPoint) {
+    public static String mapEndpoint(final String endPoint) {
         Matcher matches = Pattern.compile(REGEX_INSIDE_BRACKETS).matcher(endPoint);
         StringBuffer newEndPoint = new StringBuffer();
 
@@ -49,7 +49,7 @@ public class Mapper {
         return newEndPoint.toString().replaceAll(REGEX_BRACKETS, "");
     }
 
-    public static void addResponse(String key, Response response) {
+    public static void addResponse(final String key, final Response response) {
         RESPONSE_VALUES.put(key, response);
     }
 }
