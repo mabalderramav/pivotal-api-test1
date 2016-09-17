@@ -5,6 +5,7 @@ import cucumber.api.java.en.Then;
 import static junit.framework.TestCase.assertEquals;
 
 /**
+ *
  * Created by AlvaroDaza on 9/15/2016.
  */
 public class Asserts {
