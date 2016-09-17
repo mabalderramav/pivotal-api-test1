@@ -15,12 +15,12 @@ public final class Connection {
     private Connection() {
         RestAssured.baseURI = ENVIRONMENT.getBaseUri();
 
-        if (ENVIRONMENT.getProxy() != null) {
-            RestAssured.proxy(ENVIRONMENT.getProxy());
-        }
         requestSpecification = new RequestSpecBuilder()
                 .addHeader(X_TRACKER_TOKEN_HEADER, ENVIRONMENT.getToken())
                 .setRelaxedHTTPSValidation().build();
+        if (!ENVIRONMENT.getProxy().isEmpty()) {
+            requestSpecification.proxy(ENVIRONMENT.getProxy());
+        }
     }
 
     public RequestSpecification getRequestSpecification() {
