@@ -1,11 +1,13 @@
 Feature: Test for GET Comments in Pivotal
 
   Background: create a Project and Story
-    Given I have a crated /projects with the table
+    Given I have a created /projects with the table
       | name | Project 006-50 |
+    And I expect Status code 200
     And  stored as project
-    And I have a crated /projects/[project.id]/stories with the table
+    And I have a created /projects/[project.id]/stories with the table
       | name | Story 006-50 |
+    And I expect Status code 200
     And stored as story
 
 
