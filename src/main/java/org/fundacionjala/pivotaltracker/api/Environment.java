@@ -13,11 +13,15 @@ import java.util.Properties;
  */
 public final class Environment {
 
-    private static final String CONFIG = "config.properties";
+    private static final String CONFIG = "gradle.properties";
 
     private static final Logger LOGGER = Logger.getLogger(Environment.class);
 
-    private static final String AUTHENTICATION_TOKEN = "authentication.token";
+    private static final String AUTHENTICATION_TOKEN = "token";
+
+    private static final String AUTHENTICATION_PROXY = "authentication.proxy";
+
+    private static final String AUTHENTICATION_BASE_URI = "authentication.baseURI";
 
     private static Environment environment;
 
@@ -52,12 +56,12 @@ public final class Environment {
     }
 
     public String getBaseUri() {
-        return getEnv("authentication.baseURI");
+        return getEnv(AUTHENTICATION_BASE_URI);
     }
 
 
     public String getProxy() {
-        return getEnv("authentication.proxy");
+        return getEnv(AUTHENTICATION_PROXY);
     }
 
     public String getToken() {
