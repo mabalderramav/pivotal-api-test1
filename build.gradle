@@ -39,25 +39,28 @@ dependencies {
 }
 
 task executeFeatures() {
-    dependsOn compileTestJava, assemble
+    dependsOn assemble, compileTestJava
     doLast {
         File file = new File("cucumber-html-report")
         file.delete()
         try {
             javaexec {
+                println "primer paso"
                 main = "cucumber.api.cli.Main"
                 classpath = configurations.testRuntime + sourceSets.main.output + sourceSets.test.output
+                println "segundo paso"
                 args = ['--plugin', 'pretty',
                         '--plugin', 'html:build/cucumber-html-report',
                         '--plugin', 'json:build/cucumber.json',
                         '--plugin', 'rerun:build/rerun.txt',
-                        '--glue', 'org.fundacionjala.pivotal', 'src/test/resources/features']
-                jvmArgs = ["-Dcucumber.options=" + cucumberOptions]
-                jvmArgs = ["-DurlApi=" + urlApi]
-                jvmArgs = ["-DapiToken=" + apiToken]
+                        '--glue', 'org.fundacionjala.pivotaltracker', 'src/test/resources/features']
+                //jvmArgs = ["-Dcucumber.options=" + cucumberOptions]
+                jvmArgs = ["-DapiToken="+ token]
+                //jvmArgs = ["-Dproxy="+ authentication.proxy]
             }
         } catch (Exception e) {
             //In order to avoid FAILURE: Build failed with an exception.
+            println "error : " + e.message
         }
         sleep(5000) // sleep due to cucumber.json is not created too fast
         generateReport("build/cucumber.json", "cucumber-html-report")
