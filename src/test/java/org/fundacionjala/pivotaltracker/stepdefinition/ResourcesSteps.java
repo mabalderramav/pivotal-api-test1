@@ -1,12 +1,12 @@
 package org.fundacionjala.pivotaltracker.stepdefinition;
 
+import java.util.Map;
+
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.When;
 import io.restassured.response.Response;
 import org.fundacionjala.pivotaltracker.api.Mapper;
 import org.fundacionjala.pivotaltracker.api.RequestManager;
-
-import java.util.Map;
 
 
 public class ResourcesSteps {
@@ -40,7 +40,7 @@ public class ResourcesSteps {
         resp = RequestManager.delete(Mapper.mapEndpoint(endPoint));
     }
 
-    @When("^I have a crated (.*) with the table$")
+    @When("^I have a created (.*) with the table$")
     public final void iHaveACratedProjectsWithTheTable(final String endPoint, final Map<String, Object> jsonData) {
         resp = RequestManager.post(Mapper.mapEndpoint(endPoint), jsonData);
     }
