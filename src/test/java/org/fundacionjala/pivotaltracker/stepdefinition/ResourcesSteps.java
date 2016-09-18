@@ -9,7 +9,9 @@ import io.restassured.response.Response;
 import org.fundacionjala.pivotaltracker.api.Mapper;
 import org.fundacionjala.pivotaltracker.api.RequestManager;
 
-
+/**
+ * This class is in charge to manage the steps definitions
+ */
 public class ResourcesSteps {
 
     private Response resp;
@@ -18,7 +20,6 @@ public class ResourcesSteps {
     public final void iSendAProjectGETRequest(final String endPoint) {
         resp = RequestManager.get(Mapper.mapEndpoint(endPoint));
     }
-
 
     @And("^stored as (.*)")
     public final void storedAs(final String key) {
@@ -29,6 +30,7 @@ public class ResourcesSteps {
     public final void iSendAProjectPOSTWithTheJson(final String endPoint, final String jsonData) {
         resp = RequestManager.post(Mapper.mapEndpoint(endPoint), jsonData);
     }
+
     @When("^I send a (.*) POST with the table")
     public final void iSendAProjectPOSTWithTheTable(final String endPoint, final Map<String, Object> jsonData) {
         resp = RequestManager.post(Mapper.mapEndpoint(endPoint), jsonData);

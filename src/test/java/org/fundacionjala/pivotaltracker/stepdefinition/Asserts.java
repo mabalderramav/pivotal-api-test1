@@ -7,8 +7,8 @@ import cucumber.api.java.en.Then;
 import static junit.framework.TestCase.assertEquals;
 
 /**
- *
- * Created by AlvaroDaza on 9/15/2016.
+ * This class is in charge to manage the asserts of the
+ * steps definitions
  */
 public class Asserts {
     private final ResourcesSteps resourcesSteps;
@@ -32,4 +32,17 @@ public class Asserts {
     public final void iExpectTheProjectsNameIs(final String field, final String expectedName) {
         assertEquals(expectedName, resourcesSteps.getResponse().path(field));
     }
+
+    @Then("^The kind is (.*)$")
+    public final void theKindIsProject(final String kind) {
+        String kindOf = resourcesSteps.getResponse().path("kind").toString();
+        assertEquals(kind, kindOf);
+    }
+
+    @Then("^The enable tasks are (.*)$")
+    public final void theEnableTaksAreTrue(final String enableTasks) {
+        String valid = resourcesSteps.getResponse().path("enable_tasks").toString();
+        assertEquals(enableTasks, valid);
+    }
+
 }
