@@ -1,5 +1,7 @@
 package org.fundacionjala.pivotaltracker.stepdefinition;
 
+import java.util.List;
+
 import cucumber.api.java.en.Then;
 
 import static junit.framework.TestCase.assertEquals;
@@ -20,6 +22,12 @@ public class Asserts {
         assertEquals(statusCode, resourcesSteps.getResponse().getStatusCode());
     }
 
+    @Then("^I expect the result size should be (\\d+)$")
+    public final void iExpectTheResultSizeShouldBe(final int result) {
+        List<Object> responseResult = resourcesSteps.getResponse().jsonPath().get();
+        assertEquals(result, responseResult.size());
+    }
+
     @Then("^The (.*) field should be (.*)")
     public final void iExpectTheProjectsNameIs(final String field, final String expectedName) {
         assertEquals(expectedName, resourcesSteps.getResponse().path(field));
@@ -35,7 +43,6 @@ public class Asserts {
     public final void theEnableTaksAreTrue(final String enableTasks) {
         String valid = resourcesSteps.getResponse().path("enable_tasks").toString();
         assertEquals(enableTasks, valid);
-
     }
 
 }

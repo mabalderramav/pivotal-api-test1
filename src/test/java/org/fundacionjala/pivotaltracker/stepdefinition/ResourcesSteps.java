@@ -5,6 +5,7 @@ import java.util.Map;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.When;
 import io.restassured.response.Response;
+
 import org.fundacionjala.pivotaltracker.api.Mapper;
 import org.fundacionjala.pivotaltracker.api.RequestManager;
 
@@ -30,6 +31,11 @@ public class ResourcesSteps {
         resp = RequestManager.post(Mapper.mapEndpoint(endPoint), jsonData);
     }
 
+    @When("^I send a (.*) POST with the table")
+    public final void iSendAProjectPOSTWithTheTable(final String endPoint, final Map<String, Object> jsonData) {
+        resp = RequestManager.post(Mapper.mapEndpoint(endPoint), jsonData);
+    }
+
     @When("I send a (.*) PUT request with json")
     public final void iSendAProjectPUTRequestWithJson(final String endPoint, final String jsonData) {
         resp = RequestManager.put(Mapper.mapEndpoint(endPoint), jsonData);
@@ -40,8 +46,8 @@ public class ResourcesSteps {
         resp = RequestManager.delete(Mapper.mapEndpoint(endPoint));
     }
 
-    @When("^I have a crated (.*) with the table$")
-    public final void iHaveACratedProjectsWithTheTable(final String endPoint, final Map<String, Object> jsonData) {
+    @When("^I have a created (.*) with the table$")
+    public final void iHaveACreatedProjectsWithTheTable(final String endPoint, final Map<String, Object> jsonData) {
         resp = RequestManager.post(Mapper.mapEndpoint(endPoint), jsonData);
     }
 
@@ -49,11 +55,6 @@ public class ResourcesSteps {
     public final void iSendAProjectsProjectIdPUTRequestWithTable(final String endPoint,
                                                                  final Map<String, Object> jsonData) {
         resp = RequestManager.put(Mapper.mapEndpoint(endPoint), jsonData);
-    }
-
-    @When("^I send a (.*) POST request with table$")
-    public final void iSendAProjectsPOSTrequestWithTable(final String endPoint, final Map<String, Object> jsonData) {
-        resp = RequestManager.post(Mapper.mapEndpoint(endPoint), jsonData);
     }
 
     public final Response getResponse() {
