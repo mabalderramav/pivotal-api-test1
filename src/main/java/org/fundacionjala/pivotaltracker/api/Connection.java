@@ -4,7 +4,9 @@ import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.specification.RequestSpecification;
 
-
+/**
+ * Class to manage the connection to pivotal tracker.
+ */
 public final class Connection {
 
     private static final String X_TRACKER_TOKEN_HEADER = "X-TrackerToken";
@@ -12,6 +14,9 @@ public final class Connection {
     private static Connection connection;
     private RequestSpecification requestSpecification;
 
+    /**
+     * This method is in charge to initialize the connection.
+     */
     private Connection() {
         RestAssured.baseURI = ENVIRONMENT.getBaseUri();
 
@@ -23,10 +28,20 @@ public final class Connection {
         }
     }
 
+    /**
+     * Get the request specification.
+     *
+     * @return Request Specification.
+     */
     public RequestSpecification getRequestSpecification() {
         return requestSpecification;
     }
 
+    /**
+     * this method Instance the connection if this does not exist.
+     *
+     * @return a connection.
+     */
     public static Connection getInstance() {
         if (connection == null) {
             connection = new Connection();

@@ -11,9 +11,7 @@ import static org.fundacionjala.pivotaltracker.api.RequestManager.delete;
 
 
 /**
- * Hook to delete all projects that is created with the feature
- *
- * @author Lourdes Villca
+ * Hook to delete all projects that is created with the feature.
  */
 public class ProjectHooks {
 
@@ -23,7 +21,7 @@ public class ProjectHooks {
     public static final String PROJECT_ID_KEY = "id";
 
     /**
-     * Method to delete all projects that meets with the condition
+     * Method to delete all projects that meets with the condition.
      */
     @After("@deleteAllProject")
     public final void deleteAllProject() {
