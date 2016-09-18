@@ -1,7 +1,7 @@
 Feature: Test for PUT Project in Pivotal
 
   Background: create a Project
-    Given  I have a crated /projects with the table
+    Given  I have a created /projects with the table
       | name | AT01 Project 001-47 |
     Then I expect Status code 200
     And stored as Project1
