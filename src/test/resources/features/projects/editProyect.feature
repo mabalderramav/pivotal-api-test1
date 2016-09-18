@@ -2,23 +2,34 @@ Feature: Test for PUT Project in Pivotal
 
   Background: create a Project
     Given  I have a crated /projects with the table
-      | name | AT01 Project 001-46 |
-      And stored as project
-
+      | name | AT01 Project 001-47 |
+    Then I expect Status code 200
+    And stored as Project1
 
   Scenario: PUT method for Project API
-    When  I send a /projects/[project.id] PUT request with json
+    When  I send a /projects/[Project1.id] PUT request with json
     """
         {
-          "name":"AT01 Project 001-09"
+          "name":"AT01 Project 001-10"
         }
     """
-#        And I send a /projects/[project.id] DELETE request
     Then I expect Status code 200
+    And The name field should be AT01 Project 001-10
+
+  Scenario: PUT method for Project API
+    When  I send a /projects/[Project1.id] PUT request with table
+      | name | AT01 Project 001-02 |
+    Then I expect Status code 200
+    And The name field should be AT01 Project 001-02
 
   @deleteAllProject
-  Scenario: PUT method for Project API
-    When  I send a /projects/[project.id] PUT request with table
-      | name | AT01 Project 001-01 |
-#      And I send a /projects/[project.id] DELETE request
+  Scenario: Get method for Project API
+    When  I send a /projects/[Project1.id] GET request
     Then I expect Status code 200
+    And The kind is project
+    And The enable tasks are true
+
+
+  Scenario: DELETE method for Project API
+    When  I send a /projects/[Project1.id] DELETE request
+    Then I expect Status code 204

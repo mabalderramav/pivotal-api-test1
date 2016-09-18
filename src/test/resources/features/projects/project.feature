@@ -4,13 +4,12 @@ Feature: Test for GET Project in Pivotal
     When I send a /projects GET request
     Then I expect Status code 200
 
-#  @deleteProject
-#  Scenario: Test for POST project in pivotal
-#    Given I send a /projects POST with the table
-#      | name   | TestCreateProjectsCreated05 |
-#      | public | true                  |
-#      And I store as project
-#    Then I expect the status code 200
+  @deleteAllProject
+  Scenario: POST method for Project
+    When  I send a /projects/ POST request with table
+      | name | AT01 Project 002-01 |
+    Then The name field should be AT01 Project 002-01
+    And I expect Status code 200
 
 
 
