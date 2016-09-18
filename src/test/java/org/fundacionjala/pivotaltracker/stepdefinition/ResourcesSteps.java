@@ -45,7 +45,7 @@ public class ResourcesSteps {
     }
 
     @When("^I have a created (.*) with the table$")
-    public final void iHaveACratedProjectsWithTheTable(final String endPoint, final Map<String, Object> jsonData) {
+    public final void iHaveACreatedProjectsWithTheTable(final String endPoint, final Map<String, Object> jsonData) {
         resp = RequestManager.post(Mapper.mapEndpoint(endPoint), jsonData);
     }
 
