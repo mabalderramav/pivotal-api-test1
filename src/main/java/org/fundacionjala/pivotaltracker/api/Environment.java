@@ -1,15 +1,16 @@
 package org.fundacionjala.pivotaltracker.api;
 
-import org.apache.log4j.Logger;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
 
+import org.apache.log4j.Logger;
+
 /**
- * Created by LourdesVillca on 8/31/2016.
+ * This class is in charge to set the default  parameters to
+ * establishes the connection with pivotal tracker.
  */
 public final class Environment {
 
@@ -27,6 +28,9 @@ public final class Environment {
 
     private Properties properties;
 
+    /**
+     * This method read the config property file.
+     */
     private Environment() {
         File file = new File(CONFIG);
         try (FileReader fileReader = new FileReader(file)) {
@@ -39,6 +43,11 @@ public final class Environment {
         }
     }
 
+    /**
+     * This method Instance the environment if this does not exist.
+     *
+     * @return the instanced Environment.
+     */
     public static Environment getInstance() {
 
         if (environment == null) {
@@ -47,6 +56,12 @@ public final class Environment {
         return environment;
     }
 
+    /**
+     * Get the properties of the file.
+     *
+     * @param env string name of property setting.
+     * @return String that is a property
+     */
     public String getEnv(final String env) {
         String property = System.getProperty(env);
         if (property == null) {
@@ -55,15 +70,29 @@ public final class Environment {
         return property;
     }
 
+    /**
+     * Get the base url of pivotal tracker.
+     *
+     * @return String url.
+     */
     public String getBaseUri() {
         return getEnv(AUTHENTICATION_BASE_URI);
     }
 
-
+    /**
+     * Get the proxy.
+     *
+     * @return String with the configured proxy.
+     */
     public String getProxy() {
         return getEnv(AUTHENTICATION_PROXY);
     }
 
+    /**
+     * Get the configured token.
+     *
+     * @return String with the configured token.
+     */
     public String getToken() {
         return getEnv(AUTHENTICATION_TOKEN);
     }
