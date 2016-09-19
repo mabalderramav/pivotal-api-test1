@@ -20,4 +20,6 @@ Feature: Test for POST Comments in Pivotal
   Scenario: GET method for Story API
     When I send a /projects/[Project1.id]/stories/[Story1.id]/comments/[Comment1.id] GET request
     Then I expect Status code 200
+    And The text field should be Comments 06-50
+    And The kind is comment
 
