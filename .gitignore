@@ -1,5 +1,10 @@
 .idea/
 .gradle/
-target/
+gradle/
 build/
 *.iml
+*.log
+gradlew.bat
+gradlew
+cucumber-html-report/
+classes/
