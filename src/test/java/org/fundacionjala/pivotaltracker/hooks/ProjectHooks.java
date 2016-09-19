@@ -17,8 +17,8 @@ public class ProjectHooks {
 
     private static final String PROJECTS_ENDPOINT = "/projects/";
     private static final String PROJECT_NAME_CONDITION = "AT01";
-    public static final String PROJECT_NAME_KEY = "name";
-    public static final String PROJECT_ID_KEY = "id";
+    private static final String PROJECT_NAME_KEY = "name";
+    private static final String PROJECT_ID_KEY = "id";
 
     /**
      * Method to delete all projects that meets with the condition.
