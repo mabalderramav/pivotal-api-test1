@@ -7,7 +7,7 @@ import cucumber.api.java.en.Then;
 import static junit.framework.TestCase.assertEquals;
 
 /**
- * This class is in charge to manage the asserts of the steps definitions.
+ * This class is in charge to manage the asserts for all steps definitions.
  */
 public class Asserts {
     private final ResourcesSteps resourcesSteps;
