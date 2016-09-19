@@ -72,7 +72,7 @@ public final class RequestManager {
      */
     public static Response put(final String endPoint, final String body) {
         return given().spec(REQUEST_SPECIFICATION)
-                .header("Content-Type", "application/json")
+                .contentType(ContentType.JSON)
                 .body(body)
                 .when()
                 .put(endPoint);
