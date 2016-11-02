@@ -53,7 +53,9 @@ task executeFeatures() {
                         '--plugin', 'rerun:build/rerun.txt',
                         '--glue', 'org.fundacionjala.pivotaltracker', 'src/test/resources/features']
                 jvmArgs = ["-Dtoken=" + token]
+                jvmArgs = ["-Dproxy=" + proxy]
                 println "token : " + token
+                println "proxy : " + proxy
             }
         } catch (Exception e) {
             //In order to avoid FAILURE: Build failed with an exception.

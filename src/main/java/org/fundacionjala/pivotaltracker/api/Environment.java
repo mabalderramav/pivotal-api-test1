@@ -23,7 +23,7 @@ public final class Environment {
 
     private static final String AUTHENTICATION_TOKEN = "token";
 
-    private static final String AUTHENTICATION_PROXY = "authentication.proxy";
+    private static final String AUTHENTICATION_PROXY = "proxy";
 
     private static final String AUTHENTICATION_BASE_URI = "authentication.baseURI";
 
