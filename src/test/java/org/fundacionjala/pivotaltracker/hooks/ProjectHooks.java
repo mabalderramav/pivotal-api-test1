@@ -5,6 +5,7 @@ import java.util.Map;
 
 import cucumber.api.java.After;
 
+import cucumber.api.java.Before;
 import org.fundacionjala.pivotaltracker.api.RequestManager;
 
 import static org.fundacionjala.pivotaltracker.api.RequestManager.delete;
@@ -23,7 +24,7 @@ public class ProjectHooks {
     /**
      * Method to delete all projects that meets with the condition.
      */
-    @After("@deleteAllProject")
+    @Before("@deleteAllProject")
     public final void deleteAllProject() {
         List<Map<String, ?>> projects = RequestManager.get(PROJECTS_ENDPOINT).jsonPath().get();
         for (Map<String, ?> object : projects) {
