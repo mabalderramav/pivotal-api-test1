@@ -7,7 +7,10 @@ version '1.0-SNAPSHOT'
 apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'checkstyle'
-apply plugin: 'pmd'
+checkstyle {
+    toolVersion = "6.1.1"
+}
+
 //apply plugin: 'findbugs'
 
 // In this section you declare where to find the dependencies of your project
