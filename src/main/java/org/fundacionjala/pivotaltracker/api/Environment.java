@@ -6,7 +6,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * This class is in charge to set the default  parameters to
@@ -19,7 +20,7 @@ public final class Environment {
     private static final String MESSAGE_FAILED_CLOSING = "Failed closing";
     private static final String CONFIG = "gradle.properties";
 
-    private static final Logger LOGGER = Logger.getLogger(Environment.class);
+    private static final Logger LOGGER = LogManager.getLogger(Environment.class);
 
     private static final String AUTHENTICATION_TOKEN = "token";
 
@@ -41,7 +42,6 @@ public final class Environment {
             fileReader = new FileReader(file);
             properties = new Properties();
             properties.load(fileReader);
-
         } catch (FileNotFoundException e) {
             LOGGER.warn(MESSAGE_FILE_NOT_FOUND, e);
         } catch (IOException e) {

@@ -3,9 +3,8 @@ package org.fundacionjala.pivotaltracker.hooks;
 import java.util.List;
 import java.util.Map;
 
-import cucumber.api.java.After;
-
 import cucumber.api.java.Before;
+
 import org.fundacionjala.pivotaltracker.api.RequestManager;
 
 import static org.fundacionjala.pivotaltracker.api.RequestManager.delete;

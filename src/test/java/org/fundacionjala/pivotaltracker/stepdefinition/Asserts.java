@@ -3,6 +3,8 @@ package org.fundacionjala.pivotaltracker.stepdefinition;
 import java.util.List;
 
 import cucumber.api.java.en.Then;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import static junit.framework.TestCase.assertEquals;
 
@@ -11,6 +13,7 @@ import static junit.framework.TestCase.assertEquals;
  */
 public class Asserts {
     private final ResourcesSteps resourcesSteps;
+    private static final Logger LOGGER = LogManager.getLogger(Asserts.class);
 
     /**
      * Initialize the resources steps.
@@ -28,6 +31,8 @@ public class Asserts {
      */
     @Then("^I expect Status code (\\d+)$")
     public final void iExpectStatusCode(final int statusCode) {
+        LOGGER.info("Expected status code : " + resourcesSteps.getResponse().getStatusCode());
+        LOGGER.info("Status code from pivotal: " + resourcesSteps.getResponse().getStatusCode());
         assertEquals(statusCode, resourcesSteps.getResponse().getStatusCode());
     }
 
@@ -39,6 +44,8 @@ public class Asserts {
     @Then("^I expect the result size should be (\\d+)$")
     public final void iExpectTheResultSizeShouldBe(final int result) {
         List<Object> responseResult = resourcesSteps.getResponse().jsonPath().get();
+        LOGGER.info("Expected size: " + result);
+        LOGGER.info("Response result: " + responseResult.size());
         assertEquals(result, responseResult.size());
     }
 
@@ -50,6 +57,8 @@ public class Asserts {
      */
     @Then("^The (.*) field should be (.*)")
     public final void iExpectTheProjectsNameIs(final String field, final String expectedName) {
+        LOGGER.info("Expected Project name: " + expectedName);
+        LOGGER.info("Response result name: " + resourcesSteps.getResponse().path(field));
         assertEquals(expectedName, resourcesSteps.getResponse().path(field));
     }
 
@@ -61,6 +70,8 @@ public class Asserts {
     @Then("^The kind is (.*)$")
     public final void theKindIsProject(final String kind) {
         String kindOf = resourcesSteps.getResponse().path("kind").toString();
+        LOGGER.info("Expected Kind: " + kind);
+        LOGGER.info("Response result for Kind data: " + kindOf);
         assertEquals(kind, kindOf);
     }
 
@@ -72,6 +83,8 @@ public class Asserts {
     @Then("^The enable tasks are (.*)$")
     public final void theEnableTaksAreTrue(final String enableTasks) {
         String valid = resourcesSteps.getResponse().path("enable_tasks").toString();
+        LOGGER.info("Expected enable tasks: " + enableTasks);
+        LOGGER.info("Response result for enable task field: " + valid);
         assertEquals(enableTasks, valid);
     }
 
