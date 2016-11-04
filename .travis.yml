@@ -3,7 +3,7 @@ jdk:
 - oraclejdk8
 sudo: required
 
-script: gradle check executeFeatures -Ptoken=1a77ed61bf49f50a95282757b849b099
+script: gradle check executeFeatures -Ptoken=ff45c1d546bba5a12f2ac2bc64c08ef4
 branches:
 only: develop
 

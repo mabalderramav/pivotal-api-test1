@@ -6,6 +6,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import io.restassured.response.Response;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import static io.restassured.path.json.JsonPath.from;
 
@@ -15,6 +17,7 @@ import static io.restassured.path.json.JsonPath.from;
 
 public final class Mapper {
 
+    private static final Logger LOGGER = LogManager.getLogger(Mapper.class);
     private static final String REGEX_INSIDE_BRACKETS = "(?<=\\[)(.*?)(?=\\])";
 
     private static final String REGEX_DOT = "\\.";
@@ -64,6 +67,7 @@ public final class Mapper {
             matches.appendReplacement(newEndPoint, replaceParameter);
         }
         matches.appendTail(newEndPoint);
+        LOGGER.info("Mapper endpoint: " + newEndPoint.toString().replaceAll(REGEX_BRACKETS, ""));
         return newEndPoint.toString().replaceAll(REGEX_BRACKETS, "");
     }
 
