@@ -3,6 +3,7 @@ package org.fundacionjala.pivotaltracker.stepdefinition;
 import java.util.List;
 
 import cucumber.api.java.en.Then;
+import io.restassured.response.Response;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -12,6 +13,7 @@ import static junit.framework.TestCase.assertEquals;
  * This class is in charge to manage the asserts for all steps definitions.
  */
 public class Asserts {
+
     private final ResourcesSteps resourcesSteps;
     private static final Logger LOGGER = LogManager.getLogger(Asserts.class);
 
@@ -43,7 +45,7 @@ public class Asserts {
      */
     @Then("^I expect the result size should be (\\d+)$")
     public final void iExpectTheResultSizeShouldBe(final int result) {
-        List<Object> responseResult = resourcesSteps.getResponse().jsonPath().get();
+        List<Response> responseResult = resourcesSteps.getResponse().jsonPath().get();
         LOGGER.info("Expected size: " + result);
         LOGGER.info("Response result: " + responseResult.size());
         assertEquals(result, responseResult.size());

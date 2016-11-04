@@ -26,10 +26,10 @@ public class ProjectHooks {
     @Before("@deleteAllProject")
     public final void deleteAllProject() {
         List<Map<String, ?>> projects = RequestManager.get(PROJECTS_ENDPOINT).jsonPath().get();
-        for (Map<String, ?> object : projects) {
-            if (String.valueOf(object.get(PROJECT_NAME_KEY)).contains(PROJECT_NAME_CONDITION)) {
-                delete(PROJECTS_ENDPOINT + object.get(PROJECT_ID_KEY).toString());
+        projects.forEach(project -> {
+            if (String.valueOf(project.get(PROJECT_NAME_KEY)).contains(PROJECT_NAME_CONDITION)) {
+                delete(PROJECTS_ENDPOINT + project.get(PROJECT_ID_KEY).toString());
             }
-        }
+        });
     }
 }
