@@ -56,6 +56,10 @@ task executeFeatures() {
                         '--plugin', 'json:build/cucumber.json',
                         '--plugin', 'rerun:build/rerun.txt',
                         '--glue', 'org.fundacionjala.pivotaltracker', 'src/test/resources/features']
+                // execution by feature folders
+                splitFeatureFolders(featureFolders).each { String item -> args += [item] }
+                // execution by tags
+                jvmArgs = ["-Dcucumber.options=" + cucumberOptions]
                 jvmArgs = ["-Dtoken=" + token]
                 jvmArgs = ["-Dproxy=" + proxy]
                 println "token : " + token
@@ -82,4 +86,12 @@ def generateReport(String pathCucumber, String pathReport) {
     Configuration configuration = new Configuration(reportOutputDirectory, buildProjectName)
     ReportBuilder reportBuilder = new ReportBuilder(jsonReportFiles, configuration)
     reportBuilder.generateReports()
+}
+
+def List<String> splitFeatureFolders(String featureFolders) {
+    def featureBasePath = 'src/test/resources/features/'
+    String[] listFeatureFolders = featureFolders.split(",")
+    List<String> listFeaturesPath = new LinkedList<>();
+    listFeatureFolders.each { String item -> listFeaturesPath.add(featureBasePath + item.trim()) }
+    return listFeaturesPath
 }
