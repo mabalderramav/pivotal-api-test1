@@ -22,7 +22,7 @@ Feature: Test for PUT Comments in Pivotal
       | text | Comments 05-02 |
     Then I expect Status code 200
     And The text field should be Comments 05-02
-    And The kind is comment
+    And The kind field should be comment
 
 
   @deleteAllProject
@@ -35,7 +35,7 @@ Feature: Test for PUT Comments in Pivotal
       """
     Then I expect Status code 200
     And The text field should be Comments 05-01
-    And The kind is comment
+    And The kind field should be comment
 
   @deleteAllProject
   Scenario: DELETE method for Comments API

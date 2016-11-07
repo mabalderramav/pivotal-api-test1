@@ -28,8 +28,8 @@ Feature: Test for PUT Project in Pivotal
   Scenario: Get method for Project API
     When  I send a GET request to /projects/[Project1.id]
     Then I expect Status code 200
-    And The kind is project
-    And The enable tasks are true
+    And The kind field should be project
+    And The enable_tasks field should be true
 
 
   @deleteAllProject

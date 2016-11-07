@@ -58,36 +58,9 @@ public class Asserts {
      * @param expectedName the expected value for the field.
      */
     @Then("^The (.*) field should be (.*)")
-    public final void iExpectTheProjectsNameIs(final String field, final String expectedName) {
-        LOGGER.info("Expected Project name: " + expectedName);
-        LOGGER.info("Response result name: " + resourcesSteps.getResponse().path(field));
-        assertEquals(expectedName, resourcesSteps.getResponse().path(field));
+    public final void iExpectTheFieldShouldBe(final String field, final String expectedName) {
+        LOGGER.info("Expected " + field + " value: " + expectedName);
+        LOGGER.info("Response result value: " + resourcesSteps.getResponse().path(field));
+        assertEquals(expectedName, resourcesSteps.getResponse().path(field).toString());
     }
-
-    /**
-     * Method to validate the kind of data.
-     *
-     * @param kind kind of data.
-     */
-    @Then("^The kind is (.*)$")
-    public final void theKindIsProject(final String kind) {
-        String kindOf = resourcesSteps.getResponse().path("kind").toString();
-        LOGGER.info("Expected Kind: " + kind);
-        LOGGER.info("Response result for Kind data: " + kindOf);
-        assertEquals(kind, kindOf);
-    }
-
-    /**
-     * Method to validate if a task is enable.
-     *
-     * @param enableTasks the expected value.
-     */
-    @Then("^The enable tasks are (.*)$")
-    public final void theEnableTaksAreTrue(final String enableTasks) {
-        String valid = resourcesSteps.getResponse().path("enable_tasks").toString();
-        LOGGER.info("Expected enable tasks: " + enableTasks);
-        LOGGER.info("Response result for enable task field: " + valid);
-        assertEquals(enableTasks, valid);
-    }
-
 }
