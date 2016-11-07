@@ -55,10 +55,10 @@ CONTRIBUTORS
 
 Current contributors:
 
-    Lourdes Villca (lourdesVillca) https://github.com/lourdesVillca
-    Ericka Viraca (ErickaViraca) https://github.com/ErickaViraca
-    Angela Valdez (angy113) https://github.com/angy113
-    Aldo Balderrama (mabalderramav) https://github.com/mabalderramav
-    Bruno Vasquez (brunovasquez) https://github.com/brunovasquez
-    Alvaro Daza (AlvaroDazaQuiroga) https://github.com/AlvaroDazaQuiroga
-    Carlos Gonzales (carledriss) https://github.com/carledriss
+   Lourdes Villca (lourdesVillca) https://github.com/lourdesVillca
+   Ericka Viraca (ErickaViraca) https://github.com/ErickaViraca
+   Angela Valdez (angy113) https://github.com/angy113
+   Aldo Balderrama (mabalderramav) https://github.com/mabalderramav
+   Bruno Vasquez (brunovasquez) https://github.com/brunovasquez
+   Alvaro Daza (AlvaroDazaQuiroga) https://github.com/AlvaroDazaQuiroga
+   Carlos Gonzales (carledriss) https://github.com/carledriss
