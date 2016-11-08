@@ -11,7 +11,7 @@ import static org.fundacionjala.pivotaltracker.api.RequestManager.delete;
 
 
 /**
- * Hook to delete all projects that is created with the feature.
+ * Hook to delete all project that is created with the feature.
  */
 public class ProjectHooks {
 
@@ -21,10 +21,10 @@ public class ProjectHooks {
     private static final String PROJECT_ID_KEY = "id";
 
     /**
-     * Method to delete all projects that meets with the condition.
+     * Method to delete all project that meets with the condition.
      */
     @Before("@deleteAllProject")
-    public final void deleteAllProject() {
+    public void deleteAllProject() {
         List<Map<String, ?>> projects = RequestManager.get(PROJECTS_ENDPOINT).jsonPath().get();
         projects.forEach(project -> {
             if (String.valueOf(project.get(PROJECT_NAME_KEY)).contains(PROJECT_NAME_CONDITION)) {

@@ -1,5 +1,7 @@
 package org.fundacionjala.pivotaltracker.stepdefinition;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import cucumber.api.java.en.And;
@@ -15,14 +17,21 @@ import org.fundacionjala.pivotaltracker.api.RequestManager;
 public class ResourcesSteps {
 
     private Response resp;
+    private List<Response> responseList;
 
+    /**
+     * Constructor.
+     */
+    public ResourcesSteps() {
+        responseList = new ArrayList<>();
+    }
     /**
      * Method to store the response.
      *
      * @param key that identify the response.
      */
     @And("^stored as (.*)")
-    public final void storedAs(final String key) {
+    public void storedAs(final String key) {
         Mapper.addResponse(key, resp);
     }
 
@@ -32,7 +41,7 @@ public class ResourcesSteps {
      * @param endPoint end point of the get request.
      */
     @When("^I send a GET request to (.*)$")
-    public final void iSendAProjectGETRequest(final String endPoint) {
+    public void iSendAGetRequest(final String endPoint) {
         resp = RequestManager.get(Mapper.mapEndpoint(endPoint));
     }
 
@@ -43,7 +52,7 @@ public class ResourcesSteps {
      * @param jsonData data in json format.
      */
     @When("^I send a POST request to (.*) with the json$")
-    public final void iSendAProjectPOSTWithTheJson(final String endPoint, final String jsonData) {
+    public void iSendAPostRequestWithTheJson(final String endPoint, final String jsonData) {
         resp = RequestManager.post(Mapper.mapEndpoint(endPoint), jsonData);
     }
 
@@ -54,8 +63,23 @@ public class ResourcesSteps {
      * @param jsonData data in map format.
      */
     @When("^I send a POST request to (.*) with the table")
-    public final void iSendAProjectPOSTWithTheTable(final String endPoint, final Map<String, Object> jsonData) {
+    public void iSendAPostRequestWithTheTable(final String endPoint, final Map<String, Object> jsonData) {
         resp = RequestManager.post(Mapper.mapEndpoint(endPoint), jsonData);
+    }
+
+    /**
+     * Method to validate the post request for a given list of map.
+     *
+     * @param endPoint     end point of the post request.
+     * @param jsonDataList List of data in map format.
+     */
+    @When("^I send a POST request with list to (.*)")
+    public void iSendAPostRequestWithListTo(final String endPoint,
+                                            final List<Map<String, Object>> jsonDataList) {
+        jsonDataList.forEach(jsonData -> {
+            Response post = RequestManager.post(Mapper.mapEndpoint(endPoint), jsonData);
+            responseList.add(post);
+        });
     }
 
     /**
@@ -65,7 +89,7 @@ public class ResourcesSteps {
      * @param jsonData data in json format.
      */
     @When("I send a PUT request to (.*) with json")
-    public final void iSendAProjectPUTRequestWithJson(final String endPoint, final String jsonData) {
+    public void iSendAPutRequestWithJson(final String endPoint, final String jsonData) {
         resp = RequestManager.put(Mapper.mapEndpoint(endPoint), jsonData);
     }
 
@@ -76,7 +100,7 @@ public class ResourcesSteps {
      * @param jsonData data in Map format.
      */
     @When("^I send a PUT request to (.*) with table$")
-    public final void iSendAProjectsProjectIdPUTRequestWithTable(final String endPoint,
+    public void iSendAPutRequestWithTable(final String endPoint,
                                                                  final Map<String, Object> jsonData) {
         resp = RequestManager.put(Mapper.mapEndpoint(endPoint), jsonData);
     }
@@ -87,7 +111,7 @@ public class ResourcesSteps {
      * @param endPoint end point of the delete request.
      */
     @When("^I send a DELETE request to (.*)$")
-    public final void iSendAProjectDELETERequest(final String endPoint) {
+    public void iSendADeleteRequest(final String endPoint) {
         resp = RequestManager.delete(Mapper.mapEndpoint(endPoint));
     }
 
@@ -96,8 +120,17 @@ public class ResourcesSteps {
      *
      * @return the response.
      */
-    public final Response getResponse() {
+    public Response getResponse() {
         return resp;
+    }
+
+    /**
+     * Get the Response List.
+     *
+     * @return the responseList.
+     */
+    public List<Response> getResponseList() {
+        return responseList;
     }
 }
 

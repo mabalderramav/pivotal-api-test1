@@ -17,7 +17,6 @@ public final class Environment {
 
     private static final String MESSAGE_FILE_NOT_FOUND = "The properties file couldn't be found";
     private static final String MESSAGE_IOEXCEPTION = "A problem of type";
-    private static final String MESSAGE_FAILED_CLOSING = "Failed closing";
     private static final String CONFIG = "gradle.properties";
 
     private static final Logger LOGGER = LogManager.getLogger(Environment.class);
@@ -37,32 +36,15 @@ public final class Environment {
      */
     private Environment() {
         File file = new File(CONFIG);
-        FileReader fileReader = null;
-        try {
-            fileReader = new FileReader(file);
+        try (FileReader fileReader = new FileReader(file)) {
             properties = new Properties();
             properties.load(fileReader);
         } catch (FileNotFoundException e) {
             LOGGER.warn(MESSAGE_FILE_NOT_FOUND, e);
+            throw new RuntimeException(e);
         } catch (IOException e) {
             LOGGER.warn(MESSAGE_IOEXCEPTION, e);
-        } finally {
-            closeFileReader(fileReader);
-        }
-    }
-
-    /**
-     * Close the file Reader that was open.
-     *
-     * @param fileReader the File ro be closed.
-     */
-    private void closeFileReader(final FileReader fileReader) {
-        if (fileReader != null) {
-            try {
-                fileReader.close();
-            } catch (IOException e) {
-                LOGGER.warn(MESSAGE_FAILED_CLOSING, e);
-            }
+            throw new RuntimeException(e);
         }
     }
 

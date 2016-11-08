@@ -19,10 +19,11 @@ Feature: Test for PUT Comments in Pivotal
   @deleteAllProject
   Scenario: PUT method for Comments API with table
     When  I send a PUT request to /projects/[Project1.id]/stories/[Story1.id]/comments/[Comment1.id] with table
-      | text | Comments 05-02 |
+      | text | Comments 05-02 updated|
     Then I expect Status code 200
-    And The text field should be Comments 05-02
-    And The kind field should be comment
+    And stored as Comment2
+    And The text field should be [Comment2.text]
+    And The kind field should be [Comment2.kind]
 
 
   @deleteAllProject
@@ -30,12 +31,13 @@ Feature: Test for PUT Comments in Pivotal
     When  I send a PUT request to /projects/[Project1.id]/stories/[Story1.id]/comments/[Comment1.id] with json
       """
       {
-        "text":"Comments 05-01"
+        "text":"Comments 05-01 updated"
       }
       """
     Then I expect Status code 200
-    And The text field should be Comments 05-01
-    And The kind field should be comment
+    And stored as Comment2
+    And The text field should be [Comment2.text]
+    And The kind field should be [Comment2.kind]
 
   @deleteAllProject
   Scenario: DELETE method for Comments API

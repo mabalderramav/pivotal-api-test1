@@ -15,8 +15,9 @@ Feature: Test for PUT Comments in Pivotal
     Given I send a POST request to /projects/[Project1.id]/stories/[Story1.id]/comments with the table
       | text | Comments 07-50 |
     Then I expect Status code 200
-    And The text field should be Comments 07-50
-    And The kind field should be comment
+    And stored as Comment1
+    And The text field should be [Comment1.text]
+    And The kind field should be [Comment1.kind]
 
 
   @deleteAllProject
@@ -28,5 +29,6 @@ Feature: Test for PUT Comments in Pivotal
       }
       """
     Then I expect Status code 200
-    And The text field should be Comments 05-01
-    And The kind field should be comment
+    And stored as Comment1
+    And The text field should be [Comment1.text]
+    And The kind field should be [Comment1.kind]
