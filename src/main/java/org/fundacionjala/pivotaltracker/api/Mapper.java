@@ -67,7 +67,7 @@ public final class Mapper {
             matches.appendReplacement(newEndPoint, replaceParameter);
         }
         matches.appendTail(newEndPoint);
-        LOGGER.info("Mapper endpoint: " + newEndPoint.toString().replaceAll(REGEX_BRACKETS, ""));
+        LOGGER.info(String.format("Mapper endpoint: %s", newEndPoint.toString().replaceAll(REGEX_BRACKETS, "")));
         return newEndPoint.toString().replaceAll(REGEX_BRACKETS, "");
     }
 
