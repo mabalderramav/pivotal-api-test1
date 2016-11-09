@@ -6,9 +6,9 @@ import cucumber.api.java.en.Then;
 import io.restassured.response.Response;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
 import org.fundacionjala.pivotaltracker.api.Mapper;
 
+import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 import static junit.framework.TestCase.assertEquals;
 
 /**
@@ -16,8 +16,9 @@ import static junit.framework.TestCase.assertEquals;
  */
 public class Asserts {
 
+    private static final String PATH_SCHEMAS = "schemas/";
+    private static final String JSON = ".json";
     private static final Logger LOGGER = LogManager.getLogger(Asserts.class);
-
     private final ResourcesSteps resourcesSteps;
 
     /**
@@ -73,5 +74,15 @@ public class Asserts {
         LOGGER.info(String.format("Expected %s value: %s", field, expectedName));
         LOGGER.info(String.format("Response result value: %s", resourcesSteps.getResponse().path(field).toString()));
         assertEquals(Mapper.mapEndpoint(expectedName), resourcesSteps.getResponse().path(field).toString());
+    }
+
+    /**
+     * Method to validate the schemes.
+     * @param feature to validate schema.
+     */
+    @Then("^Validate the (.*) schema")
+    public void validateTheFeatureSchema(final String feature) {
+        resourcesSteps.getResponse()
+                .then().assertThat().body(matchesJsonSchemaInClasspath(PATH_SCHEMAS.concat(feature).concat(JSON)));
     }
 }

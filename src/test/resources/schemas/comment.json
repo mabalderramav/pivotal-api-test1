@@ -1,0 +1,34 @@
+{
+  "properties": {
+    "created_at": {
+      "type": "string"
+    },
+    "id": {
+      "type": "integer"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "person_id": {
+      "type": "integer"
+    },
+    "story_id": {
+      "type": "integer"
+    },
+    "text": {
+      "type": "string"
+    },
+    "updated_at": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "created_at",
+    "id",
+    "kind",
+    "person_id",
+    "story_id",
+    "text",
+    "updated_at"
+  ]
+}
