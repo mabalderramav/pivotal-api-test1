@@ -1,10 +1,4 @@
-Feature: Test for GET Project in Pivotal
-
-  @deleteAllProject
-  Scenario: GET method for Project API
-    When I send a GET request to /projects
-    Then I expect Status code 200
-    And Validate the project schema
+Feature: Test for POST Project in Pivotal
 
   @deleteAllProject
   Scenario: POST method for Project

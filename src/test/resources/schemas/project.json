@@ -80,6 +80,10 @@
     "project_type": {
       "type": "string"
     },
+    "start_date": {
+      "type":"string",
+      "pattern":"[0-9]{1,4}-[0-9]{1,2}-[0-9]{1,2}$"
+    },
     "start_time": {
       "type": "string",
       "pattern":"[0-9]{1,4}-[0-9]{1,2}-[0-9]{1,2}T[0-2]\\d{1}:[0-5]\\d{1}:[0-5]\\d{1}Z$"
@@ -102,5 +106,33 @@
       "type": "boolean",
       "default": true
     }
-  }
+  },
+  "required":[
+    "id",
+    "kind",
+    "name",
+    "version",
+    "iteration_length",
+    "week_start_day",
+    "point_scale",
+    "point_scale_is_custom",
+    "bugs_and_chores_are_estimatable",
+    "automatic_planning",
+    "enable_tasks",
+    "time_zone",
+    "velocity_averaged_over",
+    "number_of_done_iterations_to_show",
+    "has_google_domain",
+    "enable_incoming_emails",
+    "initial_velocity",
+    "public",
+    "atom_enabled",
+    "project_type",
+    "start_time",
+    "created_at",
+    "updated_at",
+    "account_id",
+    "current_iteration_number",
+    "enable_following"
+  ]
 }
