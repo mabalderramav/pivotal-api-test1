@@ -8,3 +8,4 @@ log/
 gradlew
 gradlew.bat
 /cucumber-html-report/
+/classes/
