@@ -55,7 +55,7 @@ task executeFeatures() {
                         '--plugin', 'html:build/cucumber-html-report',
                         '--plugin', 'json:build/cucumber.json',
                         '--plugin', 'rerun:build/rerun.txt',
-                        '--glue', 'org.fundacionjala.pivotaltracker', 'src/test/resources/features']
+                        '--glue', 'org.fundacionjala.pivotaltracker']
                 // execution by feature folders
                 splitFeatureFolders(featureFolders).each { String item -> args += [item] }
                 // execution by tags

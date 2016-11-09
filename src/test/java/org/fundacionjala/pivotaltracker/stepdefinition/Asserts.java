@@ -16,8 +16,9 @@ import static junit.framework.TestCase.assertEquals;
  */
 public class Asserts {
 
-    private final ResourcesSteps resourcesSteps;
     private static final Logger LOGGER = LogManager.getLogger(Asserts.class);
+
+    private final ResourcesSteps resourcesSteps;
 
     /**
      * Initialize the resources steps.
