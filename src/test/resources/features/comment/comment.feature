@@ -17,7 +17,7 @@ Feature: Test for POST Comments in Pivotal
     And stored as Comment1
 
   @deleteAllProject
-  Scenario: GET method for Story API
+  Scenario: GET method for Comment API
     When I send a GET request to /projects/[Project1.id]/stories/[Story1.id]/comments/[Comment1.id]
     Then I expect Status code 200
     And Validate the comment schema
