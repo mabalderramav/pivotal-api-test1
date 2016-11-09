@@ -6,6 +6,7 @@ import cucumber.api.java.en.Then;
 import io.restassured.response.Response;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
 import org.fundacionjala.pivotaltracker.api.Mapper;
 
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
@@ -77,7 +78,8 @@ public class Asserts {
     }
 
     /**
-     * Method to validate the schemes.
+     * Method to validate the schemas according the feature.
+     *
      * @param feature to validate schema.
      */
     @Then("^Validate the (.*) schema")
