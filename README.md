@@ -46,34 +46,30 @@ COMMAND LINE EXECUTION
    - To check the quality in the project's Java source files the framework are applying the Checkstyle plugin.
    The plugin adds a number of tasks to the project that perform the quality checks. You can execute the checks
    by running:
-   ```
-   gradle check
-   ```
+       ```
+       gradle check
+       ```
    - To execute gradle tasks configured into build.gradle file, you can use the following instruction:
    use proxy param if it is necessary
-   ```
-   gradle executeFeatures -Ptoken=TOKEN -Pproxy=PROXY
-   ```
+       ```
+       gradle executeFeatures -Ptoken=TOKEN -Pproxy=PROXY
+       ```
    - To execute steps definitions by folder, you can use the following command line:
-   ```
-    gradle executeFeatures -Ptoken=TOKEN -PfeatureFolders=project
-
-    ```
+       ```
+       gradle executeFeatures -Ptoken=TOKEN -PfeatureFolders=project
+       ```
     If you want to execute more than one folder then split them by a comma see the example:
-    ```
-    gradle executeFeatures -Ptoken=TOKEN -PfeatureFolders=project,story
-
-    ```
+        ```
+        gradle executeFeatures -Ptoken=TOKEN -PfeatureFolders=project,story
+        ```
     - To execute test scenarios by tag names, you can use the following command line:
-    ```
-    gradle executeFeatures -Ptoken=TOKEN -PcucumberOptions="--tags @acceptance"
-
-    ```
-    If you want to execute more than one tag then split them by a comma see the example
-    ```
-    gradle executeFeatures -Ptoken=TOKEN -PcucumberOptions="--tags @acceptance,@smoke"
-
-    ```
+        ```
+        gradle executeFeatures -Ptoken=TOKEN -PcucumberOptions="--tags @acceptance"
+        ```
+    If you want to execute more than one tag then split them by a comma see the example:
+        ```
+        gradle executeFeatures -Ptoken=TOKEN -PcucumberOptions="--tags @acceptance,@smoke"
+        ```
 CONTACTS
 --------
 
