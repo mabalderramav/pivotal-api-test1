@@ -46,7 +46,9 @@ COMMAND LINE EXECUTION
    - To check the quality in the project's Java source files the framework are applying the Checkstyle plugin.
    The plugin adds a number of tasks to the project that perform the quality checks. You can execute the checks
    by running:
-   -- gradle check
+    ```
+     gradle check
+    ```
    - To execute gradle tasks configured into build.gradle file, you can use the following instruction:
    use proxy param if it is necessary.
    ```
