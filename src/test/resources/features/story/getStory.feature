@@ -11,10 +11,10 @@ Feature: Test for GET Story in Pivotal
       | Story 003-50 | unscheduled   | feature    |
       | Story 003-51 | unscheduled   | bug        |
     Then I expect Status code 200
-    And stored as Story1
 
   @deleteAllProject
   Scenario: GET method for Story API
     When I send a GET request to /projects/[Project1.id]/stories
     Then I expect Status code 200
     And I expect the result size should be 2
+    And Validate the story schema

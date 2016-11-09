@@ -1,4 +1,4 @@
-Feature: Test for POST Comments in Pivotal
+Feature: Test for GET Comments in Pivotal
 
   Background: create a Project and Story
     Given I send a POST request to /projects with the table
@@ -11,16 +11,16 @@ Feature: Test for POST Comments in Pivotal
     Then I expect Status code 200
     And stored as Story1
 
-    Given I send a POST request to /projects/[Project1.id]/stories/[Story1.id]/comments with the table
-      | text | Comments 06-50 |
+    Given I send a POST request with list to /projects/[Project1.id]/stories/[Story1.id]/comments
+      | text           |
+      | Comments 06-50 |
+      | Comments 06-51 |
     Then I expect Status code 200
-    And stored as Comment1
 
   @deleteAllProject
   Scenario: GET method for Comment API
-    When I send a GET request to /projects/[Project1.id]/stories/[Story1.id]/comments/[Comment1.id]
+    When I send a GET request to /projects/[Project1.id]/stories/[Story1.id]/comments
     Then I expect Status code 200
     And Validate the comment schema
-    And The text field should be [Comment1.text]
-    And The kind field should be [Comment1.kind]
+    And I expect the result size should be 2
 

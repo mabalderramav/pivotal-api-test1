@@ -1,6 +1,6 @@
 Feature: Test for PUT Comments in Pivotal
 
-  Background: create a Project, Story and Comments
+  Background: Create a Project, Story and Comments
     Given  I send a POST request to /projects with the table
       | name | AT01 Project 05-24 |
     Then I expect Status code 200
