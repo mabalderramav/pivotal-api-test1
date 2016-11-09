@@ -50,7 +50,7 @@ COMMAND LINE EXECUTION
        gradle check
        ```
    - To execute gradle tasks configured into build.gradle file, you can use the following instruction:
-   use proxy param if it is necessary
+   use proxy param if it is necessary.
        ```
        gradle executeFeatures -Ptoken=TOKEN -Pproxy=PROXY
        ```
@@ -62,7 +62,7 @@ COMMAND LINE EXECUTION
         ```
         gradle executeFeatures -Ptoken=TOKEN -PfeatureFolders=project,story
         ```
-    - To execute test scenarios by tag names, you can use the following command line:
+   - To execute test scenarios by tag names, you can use the following command line:
         ```
         gradle executeFeatures -Ptoken=TOKEN -PcucumberOptions="--tags @acceptance"
         ```
