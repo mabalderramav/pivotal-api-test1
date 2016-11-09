@@ -77,10 +77,11 @@ public class Asserts {
     }
 
     /**
-     * Method to validate the schemes .
+     * Method to validate the schemes.
+     * @param feature to validate schema.
      */
     @Then("^Validate the (.*) schema")
-    public void ValidateTheSchema(String feature) {
+    public void validateTheFeatureSchema(final String feature) {
         resourcesSteps.getResponse()
                 .then().assertThat().body(matchesJsonSchemaInClasspath(PATH_SCHEMAS.concat(feature).concat(JSON)));
     }
