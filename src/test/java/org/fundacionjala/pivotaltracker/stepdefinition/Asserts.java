@@ -10,7 +10,7 @@ import org.apache.logging.log4j.Logger;
 import org.fundacionjala.pivotaltracker.api.Mapper;
 
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
-import static junit.framework.TestCase.assertEquals;
+import static org.junit.Assert.assertEquals;
 
 /**
  * This class is in charge to manage the asserts for all steps definitions.
@@ -18,7 +18,6 @@ import static junit.framework.TestCase.assertEquals;
 public class Asserts {
 
     private static final String PATH_SCHEMAS = "schemas/";
-    private static final String JSON = ".json";
     private static final Logger LOGGER = LogManager.getLogger(Asserts.class);
     private final ResourcesSteps resourcesSteps;
 
@@ -85,6 +84,6 @@ public class Asserts {
     @Then("^Validate the (.*) schema")
     public void validateTheFeatureSchema(final String feature) {
         resourcesSteps.getResponse()
-                .then().assertThat().body(matchesJsonSchemaInClasspath(PATH_SCHEMAS.concat(feature).concat(JSON)));
+                .then().assertThat().body(matchesJsonSchemaInClasspath(PATH_SCHEMAS.concat(feature)));
     }
 }
