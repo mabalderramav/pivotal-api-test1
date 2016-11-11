@@ -17,4 +17,4 @@ Feature: Test for GET Story in Pivotal
     When I send a GET request to /projects/[Project1.id]/stories
     Then I expect Status code 200
     And I expect the result size should be 2
-    And Validate the story schema
+    And Validate the story.json schema

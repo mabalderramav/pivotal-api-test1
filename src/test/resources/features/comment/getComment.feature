@@ -21,6 +21,6 @@ Feature: Test for GET Comments in Pivotal
   Scenario: GET method for Comment API
     When I send a GET request to /projects/[Project1.id]/stories/[Story1.id]/comments
     Then I expect Status code 200
-    And Validate the comment schema
+    And Validate the comment.json schema
     And I expect the result size should be 2
 
