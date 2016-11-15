@@ -7,8 +7,11 @@ version '1.0-SNAPSHOT'
 apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'checkstyle'
+checkstyle {
+    toolVersion = "6.1.1"
+}
+
 apply plugin: 'pmd'
-//apply plugin: 'findbugs'
 
 // In this section you declare where to find the dependencies of your project
 repositories {
@@ -23,7 +26,7 @@ buildscript {
         }
     }
     dependencies {
-        classpath 'net.masterthought:cucumber-reporting:2.5.0'
+        classpath 'net.masterthought:cucumber-reporting:3.2.0'
     }
 }
 
@@ -31,11 +34,11 @@ buildscript {
 dependencies {
     compile group: 'io.rest-assured', name: 'rest-assured', version: '3.0.1'
     compile group: 'io.rest-assured', name: 'json-schema-validator', version: '3.0.1'
-    compile group: 'log4j', name: 'log4j', version: '1.2.17'
+    compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.7'
 
-    testCompile group: 'info.cukes', name: 'cucumber-java', version: '1.2.4'
-    testCompile group: 'info.cukes', name: 'cucumber-junit', version: '1.2.4'
-    testCompile group: 'info.cukes', name: 'cucumber-picocontainer', version: '1.2.4'
+    testCompile group: 'info.cukes', name: 'cucumber-java', version: '1.2.5'
+    testCompile group: 'info.cukes', name: 'cucumber-junit', version: '1.2.5'
+    testCompile group: 'info.cukes', name: 'cucumber-picocontainer', version: '1.2.5'
 }
 
 task executeFeatures() {
@@ -51,9 +54,15 @@ task executeFeatures() {
                         '--plugin', 'html:build/cucumber-html-report',
                         '--plugin', 'json:build/cucumber.json',
                         '--plugin', 'rerun:build/rerun.txt',
-                        '--glue', 'org.fundacionjala.pivotaltracker', 'src/test/resources/features']
+                        '--glue', 'org.fundacionjala.pivotaltracker']
+                // execution by feature folders
+                splitFeatureFolders(featureFolders).each { String item -> args += [item] }
+                // execution by tags
+                jvmArgs = ["-Dcucumber.options=" + cucumberOptions]
                 jvmArgs = ["-Dtoken=" + token]
+                jvmArgs = ["-Dproxy=" + proxy]
                 println "token : " + token
+                println "proxy : " + proxy
             }
         } catch (Exception e) {
             //In order to avoid FAILURE: Build failed with an exception.
@@ -76,4 +85,12 @@ def generateReport(String pathCucumber, String pathReport) {
     Configuration configuration = new Configuration(reportOutputDirectory, buildProjectName)
     ReportBuilder reportBuilder = new ReportBuilder(jsonReportFiles, configuration)
     reportBuilder.generateReports()
+}
+
+def List<String> splitFeatureFolders(String featureFolders) {
+    def featureBasePath = 'src/test/resources/features/'
+    String[] listFeatureFolders = featureFolders.split(",")
+    List<String> listFeaturesPath = new LinkedList<>();
+    listFeatureFolders.each { String item -> listFeaturesPath.add(featureBasePath + item.trim()) }
+    return listFeaturesPath
 }

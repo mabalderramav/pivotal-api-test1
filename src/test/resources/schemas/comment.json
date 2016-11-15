@@ -1,0 +1,36 @@
+{
+  "properties": {
+    "created_at": {
+      "type": "string",
+      "pattern":"[0-9]{1,4}-[0-9]{1,2}-[0-9]{1,2}T[0-2]\\d{1}:[0-5]\\d{1}:[0-5]\\d{1}Z$"
+    },
+    "id": {
+      "type": "integer"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "person_id": {
+      "type": "integer"
+    },
+    "story_id": {
+      "type": "integer"
+    },
+    "text": {
+      "type": "string"
+    },
+    "updated_at": {
+      "type": "string",
+      "pattern":"[0-9]{1,4}-[0-9]{1,2}-[0-9]{1,2}T[0-2]\\d{1}:[0-5]\\d{1}:[0-5]\\d{1}Z$"
+    }
+  },
+  "required": [
+    "created_at",
+    "id",
+    "kind",
+    "person_id",
+    "story_id",
+    "text",
+    "updated_at"
+  ]
+}

@@ -1,0 +1,138 @@
+{
+  "properties": {
+    "id": {
+      "type": "integer"
+    },
+    "kind":{
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "version": {
+      "type": "integer"
+    },
+    "iteration_length":{
+      "type": "integer"
+    },
+    "week_start_day": {
+      "type": "string"
+    },
+    "point_scale": {
+      "type": "string"
+    },
+    "point_scale_is_custom": {
+      "type": "boolean",
+      "default": false
+    },
+    "bugs_and_chores_are_estimatable": {
+      "type": "boolean",
+      "default": false
+    },
+    "automatic_planning": {
+      "type": "boolean",
+      "default": true
+    },
+    "enable_tasks": {
+      "type": "boolean",
+      "default": true
+    },
+    "time_zone": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "type": "string"
+        },
+        "olson_name": {
+          "type": "string"
+        },
+        "offset": {
+          "type": "string"
+        }
+      }
+
+    },
+    "velocity_averaged_over": {
+      "type": "integer"
+    },
+    "number_of_done_iterations_to_show": {
+      "type": "integer"
+    },
+    "has_google_domain": {
+      "type": "boolean",
+      "default": false
+    },
+    "enable_incoming_emails": {
+      "type": "boolean",
+      "default": true
+    },
+    "initial_velocity": {
+      "type": "integer"
+    },
+    "public": {
+      "type": "boolean",
+      "default": false
+    },
+    "atom_enabled": {
+      "type": "boolean",
+      "default": false
+    },
+    "project_type": {
+      "type": "string"
+    },
+    "start_date": {
+      "type":"string",
+      "pattern":"[0-9]{1,4}-[0-9]{1,2}-[0-9]{1,2}$"
+    },
+    "start_time": {
+      "type": "string",
+      "pattern":"[0-9]{1,4}-[0-9]{1,2}-[0-9]{1,2}T[0-2]\\d{1}:[0-5]\\d{1}:[0-5]\\d{1}Z$"
+    },
+    "created_at": {
+      "type": "string",
+      "pattern":"[0-9]{1,4}-[0-9]{1,2}-[0-9]{1,2}T[0-2]\\d{1}:[0-5]\\d{1}:[0-5]\\d{1}Z$"
+    },
+    "updated_at": {
+      "type": "string",
+      "pattern":"[0-9]{1,4}-[0-9]{1,2}-[0-9]{1,2}T[0-2]\\d{1}:[0-5]\\d{1}:[0-5]\\d{1}Z$"
+    },
+    "account_id": {
+      "type": "integer"
+    },
+    "current_iteration_number": {
+      "type": "integer"
+    },
+    "enable_following": {
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "required":[
+    "id",
+    "kind",
+    "name",
+    "version",
+    "iteration_length",
+    "week_start_day",
+    "point_scale",
+    "point_scale_is_custom",
+    "bugs_and_chores_are_estimatable",
+    "automatic_planning",
+    "enable_tasks",
+    "time_zone",
+    "velocity_averaged_over",
+    "number_of_done_iterations_to_show",
+    "has_google_domain",
+    "enable_incoming_emails",
+    "initial_velocity",
+    "public",
+    "atom_enabled",
+    "project_type",
+    "start_time",
+    "created_at",
+    "updated_at",
+    "account_id",
+    "current_iteration_number",
+    "enable_following"
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "properties":{
+    "kind": {
+      "type":"string"
+    },
+    "id": {
+      "type":"integer"
+    },
+    "created_at": {
+      "type": "string",
+      "pattern":"[0-9]{1,4}-[0-9]{1,2}-[0-9]{1,2}T[0-2]\\d{1}:[0-5]\\d{1}:[0-5]\\d{1}Z$"
+    },
+    "updated_at": {
+      "type":"string",
+      "pattern":"[0-9]{1,4}-[0-9]{1,2}-[0-9]{1,2}T[0-2]\\d{1}:[0-5]\\d{1}:[0-5]\\d{1}Z$"
+    },
+    "story_type": {
+      "type":"string"
+    },
+    "name": {
+      "type":"string"
+    },
+    "current_state": {
+      "type":"string"
+    },
+    "requested_by_id": {
+      "type":"integer"
+    },
+    "url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "project_id": {
+      "type":"integer"
+    },
+    "owner_ids": {
+      "type":"array",
+      "items":{
+        "type":"integer"
+      }
+    },
+    "labels": {
+      "type":"array",
+      "items":{
+        "type":"string"
+      }
+    }
+  },
+  "required":[
+    "kind",
+    "id",
+    "created_at",
+    "updated_at",
+    "story_type",
+    "name",
+    "current_state",
+    "requested_by_id",
+    "url",
+    "project_id",
+    "owner_ids",
+    "labels"
+  ]
+}
